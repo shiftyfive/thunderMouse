@@ -1,8 +1,8 @@
 # Thundermouse
 ---
-Thundermouse is a static site generator. Thundermouse accepts single json file written
-as an array of JSON objects that will be converted to a tree the tree is then
-traversed and objects are written to the DOM
+A static site generator. Thundermouse accepts single JSON file must contain a single array of
+JSON objects that will be converted to a tree the tree is then
+traversed and objects are written to the DOM.
 
 ## Prerequisites
 ---
@@ -11,10 +11,10 @@ JSON must be constructed in the following manner.
 2. Objects must contain a "tag" key with a value that is a string with a value of valid html tag name
 3. must contain a content tag content can equal either
   * A string Value
-  * another object
-  * an array of objects
+  * Another JSON object
+  * an array of JSON objects
 
-Valid input example.
+## Valid input example.
 ---
 ```javascript
 let jsonArr = [
