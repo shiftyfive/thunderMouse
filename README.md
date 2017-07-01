@@ -29,9 +29,9 @@ let jsonArr = [
 ```
 
 ## Built With
-Node JS
-Express
-❤️
+* Node JS
+* Express
+* ❤️
 
 
 ## Authors
@@ -39,6 +39,6 @@ Express
 * **Joshua Warren** - *Initial work* - [shiftyfive](https://github.com/shiftyfive)
 
 ## License Info
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/shiftyfive/thunderMouse/blob/master/LICENSE.MD) file for details
 
 version 1.0.0-alpha
