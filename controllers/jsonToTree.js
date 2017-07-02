@@ -30,5 +30,6 @@ let jsonArr = [
   }
 ]
 
-function(jsonArr) {
+function jsonToTree(jsonArr) {
+  var tree = new Tree(jsonArr[0].tag,)
 }
