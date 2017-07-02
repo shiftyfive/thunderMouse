@@ -47,12 +47,18 @@ class Tree {
 
   traverseDF(callback) {
     (function recurse(currentNode) {
+
       for (var i = 0; i < currentNode.children.length; i++) {
         recurse(currentNode.children[i])
       }
 
       callback(currentNode);
+
     })(this._root);
+  }
+
+  contains(callback, traversal) {
+    traversal.call(this, callback)
   }
 
   add(tag, data, toData, traversal) {
@@ -76,10 +82,11 @@ class Tree {
     arr.forEach((el) => {
       tree._root.children.push(new Node(el.tag, el.data))
     })
+    }
   }
-}
 
 var tree = new Tree('section', 'data')
+tree.add('whatever', 'section', tree.traverseDF)
 
 tree.parseJson(jsonArr);
 
@@ -88,7 +95,7 @@ tree.parseJson(jsonArr);
 // tree._root.children.push(new Node('<section>'))
 
 tree.traverseDF(function(node) {
-  console.log(node.tag);
+  console.dir(node);
 })
 
 module.exports = { Tree, Node }
