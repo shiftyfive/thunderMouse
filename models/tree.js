@@ -52,3 +52,5 @@ class Tree {
 
 var tree = new Tree('section')
 tree.add('li', null, 'section', tree.traverseDF)
+
+module.exports = { Tree, Node}
