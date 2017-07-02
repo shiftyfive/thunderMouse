@@ -29,3 +29,6 @@ let jsonArr = [
     }
   }
 ]
+
+function(jsonArr) {
+}
