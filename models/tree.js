@@ -1,5 +1,30 @@
 'use strict'
 
+class Queue {
+  constructor() {
+  this.oldestIndex = 1
+  this.newestIndex = 1
+  this.storage = {}
+  }
+
+  size() {
+    return this.newestIndex = this.oldestIndex
+  }
+  enqueue(data) {
+    this.data = data
+    this.storage[this.newestIndex] = data
+    this.newestIndex ++
+  }
+
+  dequeue() {
+    const oldestIndex = this.oldestIndex
+    const deletedData = this.storage[oldestIndex]
+    delete this.storage[oldestIndex]
+    this.oldestIndex += 1
+    return deletedData
+  }
+}
+
 class Node {
   constructor (tag, content) {
     this.tag = tag || null
@@ -27,6 +52,23 @@ class Tree {
     })(this._root);
   }
 
+  traverseBF(callback) {
+      var queue = new Queue();
+
+      queue.enqueue(this._root);
+
+      currentNode = queue.dequeue();
+
+      while(currentNode){
+          for (var i = 0, length = currentNode.children.length; i < length; i++) {
+              queue.enqueue(currentNode.children[i]);
+          }
+
+          callback(currentNode);
+          currentNode = queue.dequeue();
+      }
+  }
+
   contains(callback, traversal) {
     traversal.call(this, callback)
   }
@@ -50,7 +92,4 @@ class Tree {
   }
 }
 
-var tree = new Tree('section')
-tree.add('li', null, 'section', tree.traverseDF)
-
-module.exports = { Tree, Node}
+module.exports = { Queue, Tree, Node}

@@ -47,18 +47,24 @@ let jsonArr = [
   }
 ]
 
+
 // return merge(mergeSort(left), mergeSort(right))
 
 function jsonToTree(jsonArr, tree, parent) {
   var tree =  tree || new Resource.Tree('main', null)
   var parent = parent || tree._root
   for (var i = 0; i < jsonArr.length; i++) {
-      tree.add(jsonArr[i].tag, jsonArr[i].content, parent.tag, tree.traverseDF)
-      if (parent.content !== String) {
+    tree.add(jsonArr[i].tag, jsonArr[i].content, parent.tag, tree.traverseBF)
+    if (!Array.isArray(parent.content && !String)) {
         parent = parent.children[0]
         console.log(parent.content);
+        parent.content.forEach((el) => {
+          tree.add(el.tag, el.content, parent.tag, tree.traverseDF)
+        })
         return jsonToTree(parent.content, tree, parent)
-    } else if()
+    } else if (parent.content === String) {
+        tree.add(jsonArr[i].tag, jsonArr[i].content, parent.tag, tree.traverseDF)
+    }
   }
   console.dir(tree._root)
   return tree
